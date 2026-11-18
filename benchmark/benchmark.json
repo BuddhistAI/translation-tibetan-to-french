@@ -1,0 +1,7 @@
+{
+  "_comment": "The buddhist-benchmarks release this skill is scored on. Never copy the test data here. Replace <task> and <code> with the task ID and language code, and the tag with the exact release.",
+  "repo": "BuddhistAI/buddhist-benchmarks",
+  "tag": "<task>/<code>@<version>",
+  "path": "tasks/<task>/data/<code>/v<major>",
+  "file": "test.jsonl"
+}
