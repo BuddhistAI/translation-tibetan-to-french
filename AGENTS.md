@@ -8,7 +8,7 @@
 - buddhist-benchmarks stays clean (short `result.json`, outputs, scores). Provenance records (`buddhistai/provenance@1`) live in the skill's own repo.
 - When you change something the handbook describes, update the handbook in the same pull request.
 - Any change users see follows EGM: see "Changes users see" below.
-- This repo: a workshop repo for one skill (`<task>-<language>`): variants, runs, provenance records and `REPORT.md`. It holds no test data: the benchmark is pinned in `benchmark/benchmark.json`. Run each variant at least 3 times, never tune on the test set, write one `provenance/<run-id>.json` per leaderboard row, and run `python3 scripts/check.py` before pushing.
+- This repo: the workshop repo for the `translation-tibetan-to-french` skill: variants, runs, provenance records and `REPORT.md`. It holds no test data: the benchmark is pinned in `benchmark/benchmark.json`. Run each variant at least 3 times, never tune on the test set, write one `provenance/<run-id>.json` per leaderboard row, and run `python3 scripts/check.py` before pushing.
 
 ## Changes users see: follow EGM
 

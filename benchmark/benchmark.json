@@ -1,7 +1,8 @@
 {
-  "_comment": "The buddhist-benchmarks release this skill is scored on. Never copy the test data here. Replace <task> and <code> with the task ID and language code, and the tag with the exact release.",
+  "_comment": "The buddhist-benchmarks release this skill is scored on. Never copy the test data here. The real set (30 Tibetan colophons, v1) is in preparation; set the exact tag when it is released.",
   "repo": "BuddhistAI/buddhist-benchmarks",
-  "tag": "<task>/<code>@<version>",
-  "path": "tasks/<task>/data/<code>/v<major>",
-  "file": "test.jsonl"
+  "tag": "translation/bo-fr@1.0.0 (not released yet)",
+  "path": "tasks/translation/data/bo-fr/v1",
+  "file": "test.jsonl",
+  "harness": "tasks/translation/harness/run.py"
 }

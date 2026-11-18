@@ -1,16 +1,24 @@
-# <task>-<language>
+# translation-tibetan-to-french
 
-<!-- Made from the template repo BuddhistAI/template-skill-repo. Name the repo after the skill, for example
-     translation-tibetan-to-english, replace every <task>, <language> and <code>, and delete these comments. -->
+The workshop for the BuddhistAI skill `translation-tibetan-to-french`: every variant we try, the runs, the provenance records and the ranking report. It does not hold the test data: that is in [buddhist-benchmarks](https://github.com/BuddhistAI/buddhist-benchmarks/tree/main/tasks/translation), pinned in `benchmark/benchmark.json`.
 
-The workshop for the BuddhistAI skill `<task>-<language>`: every variant we tried, the runs, the provenance records and the ranking report. It does not hold the test data: that is in [buddhist-benchmarks](https://github.com/BuddhistAI/buddhist-benchmarks), pinned in `benchmark/benchmark.json`.
+## Variants
+
+| Variant | Version | What it is | Scored |
+| --- | --- | --- | --- |
+| [drupchen-method-units-v1](./variants/drupchen-method-units-v1/) | 0.1.0 | Two stages: meaning units from the Tibetan, then French written from the units without the Tibetan in view | Not yet |
+| [drupchen-method-onepass-v1](./variants/drupchen-method-onepass-v1/) | 0.1.0 | The same rules in one pass, with the Tibetan in view | Not yet |
+
+Both are our reading of the method of Drupchen ([@drupchen](https://github.com/drupchen)), from his papers in the knowledge base [Papers](https://buddhistai.github.io/knowledge-base/papers/README.html) (CC BY 4.0). Drupchen did not write these skills. The plan for the comparison (no skill, one pass, two stages) is the experiment [2026-11-tibetan-french-translation](https://github.com/BuddhistAI/knowledge-base/blob/main/experiments/2026-11-tibetan-french-translation/PLAN.md). The benchmark data (`bo-fr` v1, 30 colophons) is still being collected, so nothing is scored yet.
+
+These variants were first drafts in buddhist-skills `drafts/` and moved here on 2026-11-18. When one wins on the benchmark, it is released in [buddhist-skills](https://github.com/BuddhistAI/buddhist-skills).
 
 ## Layout
 
 ```
 benchmark/
   benchmark.json      the buddhist-benchmarks release used (repo, tag, path), never a copy of the data
-  <run script>        runs a variant on the benchmark; saves the exact command and library versions per run
+  benchmark.json      (the run script is the task harness in buddhist-benchmarks: tasks/translation/harness/run.py)
 variants/<name>/      SKILL.md (with metadata.version) + VARIANT.md (who made it, what is different)
 results/              one output file + log (+ meta) per model and run
 provenance/           one provenance record per leaderboard row: provenance/<run-id>.json
@@ -25,7 +33,9 @@ Every leaderboard row has a record in [`provenance/`](./provenance/) in the stan
 ## Run it
 
 ```bash
-python benchmark/<run script> --model <model> --variant variants/<name> --out results/<date>-<model>-run1.json
+# from buddhist-benchmarks/tasks/translation:
+python3 harness/run.py --arm units --skill ../../../translation-tibetan-to-french/variants/drupchen-method-units-v1 \
+    --data data/bo-fr/v1/test.jsonl --model <model> --out runs/<run-id>/repeat-1
 python scripts/to_result_json.py ... --benchmarks ../buddhist-benchmarks
 python scripts/provenance.py --benchmarks ../buddhist-benchmarks && python scripts/provenance.py --check
 ```
@@ -34,4 +44,4 @@ Run each variant at least 3 times. Never tune on the test set.
 
 ## License
 
-MIT, unless a variant says otherwise.
+MIT, unless a variant says otherwise. Both variants are CC BY 4.0, because they follow Drupchen's CC BY 4.0 papers.
